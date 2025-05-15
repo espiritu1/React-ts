@@ -1,51 +1,44 @@
-import { useEffect, useState } from 'react';
 import './App.css'
+import { useFetch } from './hooks'
+const url = 'https://jsonplaceholder.typicode.com/posts'
+
+interface Data{
+	userId: number; 
+	id: number;
+	title: string;
+	body: string;
+}
 
 function App() {
-	const [data, setData] = useState([])
-	const [loading, setLoading] = useState(false)
-	const  [error, setError] = useState("")
-
-/* 	const consoleLoader = (loadingValue : boolean) => {
-		setLoading(loadingValue)
-		console.info(loading)
-	} */
-
-	const fetchData = async () => {
-		setLoading(true)
-		try {
-			const response = await fetch('https://jsonplaceholder.typicode.com/posts')
-
-			if (!response.ok) {
-				throw new Error('Error al obtener datos')
-			}
-			
-			const jsonData= await response.json()
-			setData(jsonData)
-		}catch (err) {
-			setError(err as string)
-		}finally {
-			setLoading(false)
-		}
-	}
-
-	useEffect(()=>{
-		fetchData()
-	},[])
+	const{data, error, loading} =useFetch<Data[]>(url)
+	  
 
 
-
+	
+	
 	if (loading) {
 		return <div>Cargando...</div>
-	}
-
-	if (error) {
-		return <div>UPS! hay un error: {error}</div>
-	}
-
-	return (
-		<div>{JSON.stringify(data)}</div> // manejar el estado de la memoria 
+	}if (error) {
+		return <div>UPS! hay un error: {error.message}</div>
+	}return (	
+		<>
+		<div>
+			{data?.map((item) => (
+				<div key={item.id} style={{ border: '1px solid #ccc', marginBottom: '1rem', padding: '1rem' }}>
+					<h2>{item.title}</h2>
+					<p><strong>ID:</strong> {item.id}</p>
+					<p><strong>Usuario:</strong> {item.userId}</p>
+					<p>{item.body}</p>
+				</div>
+			))}
+		</div>
+		
+	{/* <div>{JSON.stringify(data)}</div>   escribe data en texto plano */}
+	</>
 	)
+
+	
+
 }
 
 export default App
