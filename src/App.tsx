@@ -7,17 +7,11 @@ function App() {
 
 	return ( 
 		<>
-		{/* <BookReader/>*/}
-
-		{/* <FocusInput/> */}
-
-		{/* <ShoppingCart/> */}
-		<PhoneBook/>
-		
+			{/* <BookReader/>*/}
+			{/* <FocusInput/> */}
+			{/* <ShoppingCart/> */}
+			<PhoneBook/>
 		</>
-
-
-
 	)
 }
 export default App
