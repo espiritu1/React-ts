@@ -9,9 +9,11 @@ interface GlobalProps{
 }
 
 export const GlobalProvider = ({ children }:GlobalProps) => {
-	const [value, setValue] = useState<number >(EmptyGlobalState)
+	const [value, setValue] = useState<number>(EmptyGlobalState)
 
   return (
-	  <GlobalContext.Provider value={{value, setValue }}>{children} </GlobalContext.Provider>
+	  <GlobalContext.Provider 
+	  	value={{value, setValue }}>{children} 
+	  </GlobalContext.Provider>
 	);
 };

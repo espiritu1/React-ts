@@ -1,8 +1,7 @@
 import React, { createContext, useContext} from "react";
 
-
 interface GlobalContextType {
-	value:number |null;
+	value:number | null;
 	setValue: React.Dispatch<React.SetStateAction<number>>;
 }
 

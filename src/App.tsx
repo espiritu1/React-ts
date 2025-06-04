@@ -21,7 +21,9 @@ function App() {
 
 	return ( 
 		<GlobalProvider>
-			<ColorRed> <Button parentMethod={dimeHola}>my botton rojo</Button> </ColorRed>
+			<ColorRed> 
+				<Button parentMethod={dimeHola}>my botton rojo</Button> 
+			</ColorRed>
 			<Button parentMethod={handleClick}>my Boton normal  </Button>
 
 			<AppForm>
