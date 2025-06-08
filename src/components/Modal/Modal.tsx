@@ -3,6 +3,7 @@ import { useModalContext, } from "./Contex/ModalContext"
  import { createPortal } from "react-dom"
 import "./Modal.css"
 
+
 interface Props {
   children: React.ReactNode
 }
@@ -25,6 +26,7 @@ export const Modal = ({ children }: Props) => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setState(false)
+      
       }
     }
     if (state) {
